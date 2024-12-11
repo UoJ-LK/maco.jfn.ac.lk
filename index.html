@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>University Homepage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <style>
+        /* General Reset */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', Arial, sans-serif;
+            font-weight: 300;
+            box-sizing: border-box;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Colors */
+        :root {
+            --menu-color: #1f1f1f; /* Orange */
+            --menu-hover-color: #b60339; /* Pink */
+            --background-color: #f9f9f9;
+            --text-color: #333;
+            --scrollbar-color: #FF85A1;
+        }
+
+        /* Body Styling */
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            flex: 1;
+        }
+
+        /* Scrollbar Styling */
+        *::-webkit-scrollbar {
+            height: 2px;
+            width: 2px;
+        }
+
+        *::-webkit-scrollbar-thumb {
+            background-color: var(--scrollbar-color);
+            border-radius: 2px;
+        }
+
+        *::-webkit-scrollbar-track {
+            background: #e0e0e0;
+        }
+
+        /* Top Menu */
+        .top-menu {
+            display: flex;
+            overflow-x: auto;
+            white-space: nowrap;
+            background-color: var(--menu-color);
+            padding: 5px;
+            align-items: center;
+            height: 25px;
+        }
+
+        .top-menu-item {
+            display: inline-block;
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .top-menu-item:hover {
+            background-color: var(--menu-hover-color);
+            border-radius: 4px;
+        }
+
+        .top-menu-nav {
+            display: flex;
+            flex-grow: 1;
+            /*overflow-x: scroll;*/
+            /*scroll-behavior: smooth;*/
+        }
+
+        .menu-arrow {
+            background: var(--menu-color);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            display: none;
+        }
+
+        /* Primary Menu */
+        .primary-menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: var(--menu-hover-color);
+            color: white;
+            position: relative;
+            height: 40px;
+        }
+
+        .primary-menu .toggle {
+            display: none;
+            cursor: pointer;
+        }
+
+        .primary-menu-items {
+            display: flex;
+            gap: 20px;
+        }
+
+        .primary-menu-item {
+            text-decoration: none;
+            color: white;
+        }
+
+        .primary-menu-item:hover {
+            text-decoration: underline;
+            color: var(--menu-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+
+            .top-menu {
+                height: 50px;
+                overflow: hidden;
+            }
+
+            .primary-menu {
+                height: 50px;
+            }
+
+            .primary-menu .toggle {
+                display: block;
+                position: absolute;
+                right: 15px;
+            }
+
+            .primary-menu-items {
+                display: none;
+                left: 0;
+                flex-direction: column;
+                width: 96%;
+                position: absolute;
+                top: 50px;
+                background-color: var(--menu-hover-color);
+                padding: 10px;
+                border-radius: 5px;
+                z-index: 1000;
+            }
+
+            .primary-menu-items.show {
+                display: flex;
+            }
+
+            .top-menu {
+                overflow-x: hidden;
+            }
+
+            .menu-arrow {
+                display: inline-block;
+            }
+
+            .top-menu-nav {
+                overflow-x: scroll;
+            }
+        }
+
+        /* Container Widths */
+        .container {
+            margin: 0 auto;
+            padding: 0 5px;
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                max-width: 100%;
+            }
+
+            .top-menu-nav {
+                overflow-x: scroll;
+                scroll-behavior: smooth;
+            }
+        }
+
+        @media (min-width: 576px) {
+            .container {
+                max-width: 540px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 720px;
+            }
+
+            .menu-arrow {
+                display: none;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .container {
+                max-width: 960px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1140px;
+            }
+        }
+
+        @media (min-width: 1400px) {
+            .container {
+                max-width: 1320px;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--menu-color);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+<!-- Top Menu -->
+<div class="top-menu">
+    <button class="menu-arrow">&#8592;</button>
+    <div class="top-menu-nav">
+        <a class="top-menu-item" href="#">Home</a>
+        <a class="top-menu-item" href="#">About</a>
+        <a class="top-menu-item" href="#">Departments</a>
+        <a class="top-menu-item" href="#">Admissions</a>
+        <a class="top-menu-item" href="#">Research</a>
+        <a class="top-menu-item" href="#">Contact</a>
+    </div>
+    <button class="menu-arrow">&#8594;</button>
+</div>
+
+<!-- Primary Menu -->
+<div class="primary-menu">
+    <span class="toggle" onclick="toggleMenu(event)">&#9776; Menu</span>
+    <div class="primary-menu-items">
+        <a class="primary-menu-item" href="#">Dashboard</a>
+        <a class="primary-menu-item" href="#">Courses</a>
+        <a class="primary-menu-item" href="#">Library</a>
+        <a class="primary-menu-item" href="#">Events</a>
+    </div>
+</div>
+
+<!-- Body Content -->
+<div class="container">
+    <h1>Welcome to the University</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante
+        dapibus diam.</p>
+</div>
+
+<!-- Footer -->
+<footer>
+    &copy; 2024 University Name. All Rights Reserved.
+</footer>
+
+<script>
+    function toggleMenu(event) {
+        const menu = document.querySelector('.primary-menu-items');
+        menu.classList.toggle('show');
+        document.addEventListener('click', closeMenuOutside, true);
+        event.stopPropagation();
+    }
+
+    function closeMenuOutside(event) {
+        const menu = document.querySelector('.primary-menu-items');
+        const toggle = document.querySelector('.toggle');
+        if (!menu.contains(event.target) && !toggle.contains(event.target)) {
+            menu.classList.remove('show');
+            document.removeEventListener('click', closeMenuOutside, true);
+        }
+    }
+</script>
+</body>
+</html>
