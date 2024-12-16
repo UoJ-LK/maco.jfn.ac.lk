@@ -34,7 +34,7 @@ const components = [
 
 components.forEach(component => loadComponent(component.id, component.url));
 
-async function loadHeadContent(url) {
+const loadHeadContent = async (url) => {
     try {
         const response = await fetch(url);
         if (!response.ok) {

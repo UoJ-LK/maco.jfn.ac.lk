@@ -12,7 +12,7 @@ body, html {
 
 /* Colors */
 :root {
-    --top-menu-background-color: #1b263b; /* Deep Navy Blue */
+    --top-menu-background-color: #9c27b0; /* Deep Navy Blue */
     --menu-text-color: #1f1f1f; /* Light White */
     --menu-text-hover-color: #1f1f1f; /* Soft Blue */
     --menu-background-color: #ffffff; /* Vibrant Blue */
@@ -486,4 +486,61 @@ hr {
 .dept-img {
     width: 100%;
     height: auto;
+}
+
+/* Container for the title and breadcrumb */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 3px solid var(--top-menu-background-color);
+}
+
+/* Title styling */
+.page-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--top-menu-background-color);
+    margin: 0;
+}
+
+/* Breadcrumb styling */
+.breadcrumb {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+}
+
+.breadcrumb li {
+    display: inline;
+    color: #666;
+}
+
+.breadcrumb li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.breadcrumb li + li::before {
+    content: ' / ';
+    padding: 0 8px;
+    color: #999;
+}
+
+.breadcrumb li:last-child {
+    color: #000;
+}
+
+
+.bg-transparent {
+    background-color: transparent !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    line-height: 1.2;
 }
