@@ -1,19 +1,3 @@
-const toggleMenu = (event) => {
-    const menu = document.querySelector('.primary-menu-items');
-    menu.classList.toggle('show');
-    document.addEventListener('click', closeMenuOutside, true);
-    event.stopPropagation();
-}
-
-const closeMenuOutside = (event) => {
-    const menu = document.querySelector('.primary-menu-items');
-    const toggle = document.querySelector('.toggle');
-    if (!menu.contains(event.target) && !toggle.contains(event.target)) {
-        menu.classList.remove('show');
-        document.removeEventListener('click', closeMenuOutside, true);
-    }
-}
-
 const loadComponent = async (id, url) => {
     try {
         const response = await fetch(url);
@@ -57,3 +41,4 @@ const loadHeadContent = async (url) => {
 
 // Load common head content
 loadHeadContent('components/head.html');
+
